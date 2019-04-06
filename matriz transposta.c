@@ -51,33 +51,33 @@ float** transposta(int m, int n, float** mat)
 
 int main(void)
 {
-	int i;
 	int m, n;
 	float** matriz;
 	float** transp;
 
 	/* coleta dados */
-	printf("Digite o numero de linhas e o numero de colunas da matriz abaixo:\n");
+	printf("Digite o n%cmero de linhas e colunas da matriz abaixo:\n", 163);
 	scanf("%d\n%d", &m, &n);
 	
 	/*- matriz original */
 	matriz = aloca_matriz(m, n);
-	printf("\nA matriz original eh:\n");
+	printf("\nA matriz original %c:\n", 130);
 	imprime_matriz(m, n, matriz);
 
 	/*matriz transposta */
 	transp = transposta(m, n, matriz); 
-	printf("\nA matriz transposta eh:\n");
+	printf("\nA matriz transposta %c:\n", 130);
 	imprime_matriz(n, m, transp);
 
 	printf("\n");
 
 	/* libera memória */
-	for (i = 0; i < m; i++)
+	for (int i = 0; i < m; i++)
+	{
 		free(matriz[i]);
-	free(matriz);
-	for (i = 0; i < n; i++)
 		free(transp[i]);
+	}
+	free(matriz);
 	free(transp);
 	
 	return 0;

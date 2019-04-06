@@ -38,11 +38,21 @@ float acessa(int n, float** mat, int i, int j)
 	else
 		return mat[j][i];							/*       retorna o simétrico       */
 }
-void preenche_matriz_simetrica(int n, float** mat)
+void preenche_matriz_triangular(int n, float** mat)
 {
+	float valor;
+
+	scanf("%f", &valor);
+
 	for (int i = 0; i < n; i++)
 		for (int j = 0; j < i + 1; j++)
-			scanf("%f", &mat[i][j]);
+		{
+			if (i == j)
+				mat[i][j] = valor;
+			else
+				mat[i][j] = 0;
+		}
+			
 }
 void imprime_matriz_simetrica(int n, float** mat)
 {
@@ -63,14 +73,14 @@ int main(void)
 	int n;
 	float** matriz;
 
-	printf("Digite o n%cmero de linhas e colunas da matriz sim%ctrica:\n", 163, 130);
+	printf("Digite o n%cmero de linhas e colunas da matriz triangular:\n", 163);
 	scanf("%d", &n);
 	matriz = cria(n);
 
-	printf("Digite os elementos da matriz:\n");
-	preenche_matriz_simetrica(n, matriz);
+	printf("Digite o valor dos elementos da diagonal da matriz:\n");
+	preenche_matriz_triangular(n, matriz);
 
-	printf("\nA matriz completa %c:\n", 130);
+	printf("\nA matriz triangular %c:\n", 130);
 	imprime_matriz_simetrica(n, matriz);
 
 	printf("\n");
